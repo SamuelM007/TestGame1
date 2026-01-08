@@ -8,23 +8,23 @@
 int main() {
     bn::core::init();
 
-    bn::backdrop::set_color(bn::color(31, 0, 0));
+    bn::backdrop::set_color(bn::color(0, 31, 0));
 
     auto dot = bn::sprite_items::dot.create_sprite(0, 0);
 
     bn::fixed speed = 5.5;
 
     while(true) {
-        if(bn::keypad::left_held()) {
+        if(bn::keypad::left_held() && dot.x() > -115) {
             dot.set_x(dot.x() - speed);
         }
-        if(bn::keypad::right_held()) {
+        if(bn::keypad::right_held() && dot.x() < 115) {
             dot.set_x(dot.x() + speed);
         }
-        if(bn::keypad::up_held()) {
+        if(bn::keypad::up_held() && dot.y() > -75) {
             dot.set_y(dot.y() - speed);
         }
-        if(bn::keypad::down_held()) {
+        if(bn::keypad::down_held() && dot.y() < 75) {
             dot.set_y(dot.y() + speed);
         }
         bn::core::update();
